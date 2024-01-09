@@ -41,16 +41,11 @@ class AuthController extends Controller
             $user = Auth::user();
             $token = JWTAuth::fromUser($user);
 
-            switch ($user->role) {
-                case 1:
-                    return response()->json(['user' => $user, 'access_token' => $token], 200);
-                case 2:
-                    return response()->json(['user' => $user, 'access_token' => $token], 200);
-                case 3:
-                    return response()->json(['user' => $user, 'access_token' => $token], 200);
-                default:
-                    return response()->json(['error' => 'Invalid role'], 401);
-            }
+            return response()->json([
+                'user' => $user,
+                'access_token' => $token,
+                'role' => $user->role,
+            ], 200);
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }

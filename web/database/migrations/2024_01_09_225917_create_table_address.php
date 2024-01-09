@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service', function (Blueprint $table) {
-            $table->uuid('uuid_service')->primary();
+        Schema::create('address', function (Blueprint $table) {
+            $table->uuid('uuid_address')->primary();
             $table->uuid('uuid_user');
             $table->foreign('uuid_user')->references('uuid')->on('users')->onDelete('cascade');
-            $table->string('type_service');
-            $table->string('detail');
-            $table->float('price');
+            $table->double('longitude');
+            $table->double('latitude');
+            $table->string('address');
+            $table->text('address_note')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service');
+        Schema::dropIfExists('address');
     }
 };

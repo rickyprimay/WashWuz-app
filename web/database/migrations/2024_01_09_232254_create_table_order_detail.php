@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service', function (Blueprint $table) {
-            $table->uuid('uuid_service')->primary();
+        Schema::create('order_detail', function (Blueprint $table) {
+            $table->uuid('uuid_detail')->primary();
             $table->uuid('uuid_user');
             $table->foreign('uuid_user')->references('uuid')->on('users')->onDelete('cascade');
-            $table->string('type_service');
-            $table->string('detail');
-            $table->float('price');
+            $table->uuid('uuid_order');
+            $table->foreign('uuid_order')->references('uuid_order')->on('order')->onDelete('cascade');
+            $table->uuid('uuid_service');
+            $table->foreign('uuid_service')->references('uuid_service')->on('service')->onDelete('cascade');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service');
+        Schema::dropIfExists('order_detail');
     }
 };

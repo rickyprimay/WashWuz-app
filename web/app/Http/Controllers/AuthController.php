@@ -16,6 +16,7 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
             'address' => 'required|string',
+            'call_number' => 'required|string',
         ]);
 
         if ($validator->fails()) {

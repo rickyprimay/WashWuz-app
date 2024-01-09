@@ -15,7 +15,6 @@ class AuthController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
-            'address' => 'required|string',
             'call_number' => 'required|string',
         ]);
 
@@ -27,7 +26,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'address' => $request->address,
+            'call_number' => $request->call_number,
             'role' => '1', // Default role 
         ]);
 

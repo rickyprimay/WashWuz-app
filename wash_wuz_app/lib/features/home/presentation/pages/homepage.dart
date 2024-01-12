@@ -183,8 +183,8 @@ class CardContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: ColorResources.WhiteBackground,
         border: Border.all(
-          color: ColorResources.GreyText,
-          width: 2,
+          color: ColorResources.GreyText.withOpacity(0.7),
+          width: 1,
         ),
         borderRadius: BorderRadius.circular(20),
       ),

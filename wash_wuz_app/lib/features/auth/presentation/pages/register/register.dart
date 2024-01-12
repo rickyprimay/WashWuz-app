@@ -1,16 +1,13 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:wash_wuz_app/core/utils/color_resrouces.dart';
 import 'package:wash_wuz_app/core/utils/dimensions.dart';
 import 'package:wash_wuz_app/core/utils/images.dart';
-import 'package:wash_wuz_app/features/auth/presentation/pages/register/register.dart';
+import 'package:wash_wuz_app/features/auth/presentation/pages/login/login.dart';
 import 'package:wash_wuz_app/features/auth/presentation/widgets/custom_auth_text_field.dart';
-import 'package:wash_wuz_app/features/home/presentation/pages/homepage.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +21,11 @@ class LoginPage extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  flex: 4,
-                  child: Center(
-                    child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset(ImagesPath.logoForLogin)),
-                  ),
+                  flex: 1,
+                  child: Image.asset(ImagesPath.logoForRegister),
                 ),
                 Expanded(
-                  flex: 6,
+                  flex: 4,
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
@@ -50,7 +43,7 @@ class LoginPage extends StatelessWidget {
                           Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              "Login",
+                              "Register",
                               textAlign: TextAlign.start,
                               style: GoogleFonts.workSans(
                                 fontSize: Dimensions.fontSizeLarge,
@@ -58,10 +51,10 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                           const CustomAuthTextField(
-                            text: "Email/Username",
+                            text: "Nama",
                           ),
-                          const SizedBox(
-                            height: 10,
+                          const CustomAuthTextField(
+                            text: "Email",
                           ),
                           TextField(
                             decoration: InputDecoration(
@@ -74,20 +67,13 @@ class LoginPage extends StatelessWidget {
                               //
                             ),
                           ),
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                foregroundColor: ColorResources.GreyText,
-                              ),
-                              child: Text(
-                                'Forgot Password?',
-                                style: GoogleFonts.workSans(),
-                              ),
-                              onPressed: () {},
-                            ),
+                          const CustomAuthTextField(
+                            text: "Nomor Telepon",
                           ),
-                          Spacer(),
+                          const CustomAuthTextField(
+                            text: "Alamat",
+                          ),
+                          const Spacer(),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.8,
                             height: 55,
@@ -95,27 +81,21 @@ class LoginPage extends StatelessWidget {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: ColorResources.BlueButton,
                               ),
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Homepage()));
-                              },
+                              onPressed: () {},
                               child: Text(
-                                "Login",
+                                "Register",
                                 style: GoogleFonts.workSans(
                                   fontSize: Dimensions.fontSizeDefault,
                                 ),
                               ),
                             ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Don\'t have an account?',
+                                'Have an account?',
                                 style: GoogleFonts.workSans(),
                               ),
                               TextButton(
@@ -123,7 +103,7 @@ class LoginPage extends StatelessWidget {
                                   foregroundColor: ColorResources.BlueAuth,
                                 ),
                                 child: Text(
-                                  'Register',
+                                  'Login',
                                   style: GoogleFonts.workSans(),
                                 ),
                                 onPressed: () {
@@ -131,12 +111,12 @@ class LoginPage extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const RegisterPage()));
+                                              const LoginPage()));
                                 },
                               ),
                             ],
                           ),
-                          Spacer(),
+                          const Spacer(),
                         ],
                       ),
                     ),

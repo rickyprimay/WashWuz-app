@@ -8,4 +8,6 @@ class ColorResources {
   static Color GreyBackground = Color.fromARGB(255, 250, 250, 250);
   static Color GreyText = Color(0XFF4F4F4F);
   static Color BlueButton = Color(0xff4C6ED7);
+
+  static Color BlueHomePage = Color(0XFF3392F2);
 }

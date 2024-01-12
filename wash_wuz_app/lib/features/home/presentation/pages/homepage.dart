@@ -146,15 +146,39 @@ class Homepage extends StatelessWidget {
                               )),
                         ],
                       ),
-                      CardContainer(),
+                      CardContainer(
+                        name: 'Mari Laundry',
+                        image: 'assets/images/LAUNDRY1.jpeg',
+                        distance: '0.2 Km Away',
+                        address: 'Jl. Pleburan Gang 1 no.666 ',
+                      ),
                       SizedBox(
                         height: 10,
                       ),
-                      CardContainer(),
+                      CardContainer(
+                        name: 'Bagus Laundry',
+                        image: 'assets/images/LAUNDRY2.jpeg',
+                        distance: '1.2 Km Away',
+                        address: 'Jl. Indraprasta no.666 Semarang',
+                      ),
                       SizedBox(
                         height: 10,
                       ),
-                      CardContainer(),
+                      CardContainer(
+                        name: 'Ajeng Laundry',
+                        image: 'assets/images/LAUNDRY3.jpeg',
+                        distance: '3.9 Km Away',
+                        address: 'Jl. Majapahit no.666 Semarang',
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      CardContainer(
+                        name: 'Hanif Laundry',
+                        image: 'assets/images/LAUNDRY4.jpeg',
+                        distance: '4.1 Km Away',
+                        address: 'Jl. Pedurungan no.66 Gang Pancur',
+                      ),
                       SizedBox(
                         height: 10,
                       ),
@@ -172,9 +196,17 @@ class Homepage extends StatelessWidget {
 }
 
 class CardContainer extends StatelessWidget {
+  final String name;
+  final String address;
+  final String distance;
+  final String image;
   const CardContainer({
-    super.key,
-  });
+    Key? key,
+    required this.name,
+    required this.address,
+    required this.distance,
+    required this.image,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -188,49 +220,65 @@ class CardContainer extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Row(
-          children: [
-            Expanded(
-              child: Container(),
-              flex: 1,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Mari Laundry',
-                    style: GoogleFonts.mulish(
-                      fontSize: Dimensions.fontSizeLarge,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  Text(
-                    'Jl. Indraprasta no.666 Gang Gacor',
-                    style: GoogleFonts.mulish(
-                      fontSize: Dimensions.fontSizeDefault,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Text(
-                    '0.2 Km Away',
-                    style: GoogleFonts.mulish(
-                      fontSize: Dimensions.fontSizeSmall,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ],
+      child: Row(
+        children: [
+          Container(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
               ),
-              flex: 2,
-            )
-          ],
-        ),
+              width: 100,
+              height: 100,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20)),
+                  child: Image.asset(
+                    // 'assets/images/LAUNDRY1.jpeg',
+                    image,
+                    fit: BoxFit.cover,
+                  )),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  // 'Mari Laundry',
+                  name,
+                  style: GoogleFonts.mulish(
+                    fontSize: Dimensions.fontSizeLarge,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Text(
+                  // 'Jl. Indraprasta no.666 Gang Gacor',
+                  address,
+                  style: GoogleFonts.mulish(
+                    fontSize: Dimensions.fontSizeDefault,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  // '0.2 Km Away',\
+                  distance,
+                  style: GoogleFonts.mulish(
+                    fontSize: Dimensions.fontSizeSmall,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
